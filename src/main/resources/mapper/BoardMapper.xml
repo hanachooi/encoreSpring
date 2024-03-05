@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.example.encoreSpring.mapper.BoardMapper">
-    <sql id = "boardColumns">
+    <sql id = "insertColumns">
     title,
     content,
     writer,
@@ -13,10 +13,25 @@
     insert_time,
     update_time
     </sql>
+
+    <sql id = "selectColumns">
+    idx,
+    title,
+    content,
+    writer,
+    view_cnt,
+    notice_yn,
+    secret_yn,
+    delete_yn,
+    insert_time,
+    update_time
+    </sql>
+
+
     <insert id="save"
             parameterType="com.example.encoreSpring.domain.BoardRequest">
         INSERT INTO ENCORE_BOARD_TBL(
-        <include refid="boardColumns"/>
+        <include refid="insertColumns"/>
         )
         VALUES( #{title},
         #{content},
@@ -29,5 +44,44 @@
         NULL)
     </insert>
 
+
+    <select id="findByIdx"
+            parameterType="com.example.encoreSpring.domain.BoardRequest"
+            resultType="com.example.encoreSpring.domain.BoardResponse"
+    >
+        SELECT <include refid = "selectColumns"/>
+        FROM ENCORE_BOARD_TBL
+        WHERE IDX = #{idx}
+    </select>
+
+    <update id = "updateById"
+            parameterType="com.example.encoreSpring.domain.BoardRequest"
+            >
+        UPDATE ENCORE_BOARD_TBL
+        SET title = #{title},
+            content = #{content},
+            writer = #{writer},
+            update_time = NOW()
+        WHERE IDX = #{idx}
+    </update>
+
+    <select id = "count"
+            parameterType="com.example.encoreSpring.domain.BoardRequest">
+        SELECT COUNT(*)
+        FROM ENCORE_BOARD_TBL
+    </select>
+
+    <delete id = "deleteByIdx"
+            parameterType="com.example.encoreSpring.domain.BoardRequest">
+            DELETE
+            FROM ENCORE_BOARD_TBL
+            WHERE IDX = #{idx}
+    </delete>
+
+    <select id="findAll"
+            parameterType="com.example.encoreSpring.domain.BoardRequest">
+        SELECT <include refid = "selectColumns"/>
+        FROM ENCORE_BOARD_TBL
+    </select>
 
 </mapper>
