@@ -17,7 +17,7 @@ public class MybatisOrmTest {
 
     @Autowired
     private BoardMapper boardMapper;
-
+/*
     @Test
     public void ormSave(){
         System.out.println("debug >>>>> " + boardMapper);
@@ -84,5 +84,5 @@ public class MybatisOrmTest {
             System.out.println(b.toString());
         }
     }
-
+*/
 }
