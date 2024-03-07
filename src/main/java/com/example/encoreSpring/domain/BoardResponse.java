@@ -1,14 +1,12 @@
 package com.example.encoreSpring.domain;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import java.sql.Time;
 import java.time.LocalDateTime;
 
-@Getter @Setter @ToString @NoArgsConstructor
+@Getter @Setter @ToString //@Builder
+@NoArgsConstructor
 public class BoardResponse {
 
     private Integer idx;
@@ -18,9 +16,8 @@ public class BoardResponse {
     private Integer viewCnt;
     private boolean noticeYn;
     private boolean secretYn;
+    private boolean deleteYn;
     private LocalDateTime insertTime;
     private LocalDateTime updateTime;
-    private LocalDateTime deleteTime;
-
 }
 

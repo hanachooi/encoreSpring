@@ -11,10 +11,11 @@ import lombok.Builder;
  -- StudentRequest(String name, String address, String stuId ,... ) = new StudentRequest(name, adress, .. ){};
 */
 
-@Builder        // 빌더 패턴일 때는, 빌더로 객체를 관리(getter, setter, 생성) 하므로,다른 어노테이션을 쓸 필요가 없다.
+//@Builder        // 빌더 패턴일 때는, 빌더로 객체를 관리(getter, setter, 생성) 하므로,다른 어노테이션을 쓸 필요가 없다.
 @Getter
 @Setter
 @ToString
+@NoArgsConstructor
 //@NoArgsConstructor  // 빌더 패턴이 없을 때, 만드는 생성자
 public class BoardRequest {
 

@@ -37,6 +37,7 @@ public class BoardServiceImpl implements BoardService {
 
         System.out.println("debug >>>> service findBoard : " + boardMapper);
         BoardResponse response = boardMapper.findByIdx(params);
+        System.out.println(response.toString());
         return response;
     }
 
